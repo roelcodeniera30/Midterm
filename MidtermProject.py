@@ -88,6 +88,7 @@ class Opponent(Block):
 	def __init__(self,path,x_pos,y_pos,speed):
 		super().__init__(path,x_pos,y_pos)
 		self.speed = speed
+		self
 
 	def update(self,ball_group):
 		if self.rect.top < ball_group.sprite.rect.y:
@@ -157,7 +158,7 @@ middle_strip = pygame.Rect(screen_width/2 - 2,0,4,screen_height)
 
 # Game objects
 player = Player('Paddle - Copy.png',screen_width - 20,screen_height/2,5)
-opponent = Opponent('Paddle.png',20,screen_width/2,5)
+opponent = Player('Paddle.png',20,screen_width/2,5)
 paddle_group = pygame.sprite.Group()
 paddle_group.add(player)
 paddle_group.add(opponent)
@@ -170,19 +171,33 @@ game_manager = GameManager(ball_sprite,paddle_group)
 
 while True:
 	for event in pygame.event.get():
+		
 		if event.type == pygame.QUIT:
 			pygame.quit()
 			sys.exit()
 		if event.type == pygame.KEYDOWN:
+			#player 1
 			if event.key == pygame.K_UP:
 				player.movement -= player.speed
 			if event.key == pygame.K_DOWN:
 				player.movement += player.speed
+			#player 2
+			if event.key == pygame.K_w:
+				opponent.movement -= opponent.speed
+			if event.key == pygame.K_s:
+				opponent.movement += opponent.speed
 		if event.type == pygame.KEYUP:
+			#player 1
 			if event.key == pygame.K_UP:
 				player.movement += player.speed
 			if event.key == pygame.K_DOWN:
 				player.movement -= player.speed
+			#player 2
+			if event.key == pygame.K_w:
+				opponent.movement += opponent.speed
+			if event.key == pygame.K_s:
+				opponent.movement -= opponent.speed
+
 	
 	# Background Stuff
 	screen.fill(bg_color)
