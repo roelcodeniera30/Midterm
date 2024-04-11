@@ -90,7 +90,8 @@ class GameManager:
 		self.opponent_score = 0
 		self.ball_group = ball_group
 		self.paddle_group = paddle_group
-
+		self.SCORE_TO_WIN = 3
+  
 	def run_game(self):
 		# Drawing the game objects
 		self.paddle_group.draw(screen)
@@ -109,7 +110,21 @@ class GameManager:
 		if self.ball_group.sprite.rect.left <= 0:
 			self.player_score += 1
 			self.ball_group.sprite.reset_ball()
-
+   
+		if self.opponent_score >= self.SCORE_TO_WIN:
+			winner_score = basic_font.render("Red Player Wins!", True, accent_color)
+			screen.blit(winner_score, (screen_width // 2 - winner_score.get_width() // 2, screen_height // 2))
+			pygame.display.update()
+			pygame.time.delay(2000)
+			running = False
+   
+		elif self.player_score >= self.SCORE_TO_WIN:
+    		 winner_score = basic_font.render("Blue Player  Wins!", True, accent_color)
+    		 screen.blit(winner_score, (screen_width // 2 - winner_score.get_width() // 2, screen_height // 2))
+    		 pygame.display.update()
+    		 pygame.time.delay(5000)
+    		 running = False
+      
 	def draw_score(self):
 		player_score = basic_font.render(str(self.player_score),True,accent_color)
 		opponent_score = basic_font.render(str(self.opponent_score),True,accent_color)
@@ -152,7 +167,7 @@ ball_sprite = pygame.sprite.GroupSingle()
 ball_sprite.add(ball)
 
 game_manager = GameManager(ball_sprite,paddle_group)
-
+    
 while True:
 	for event in pygame.event.get():
 		
