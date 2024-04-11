@@ -84,23 +84,6 @@ class Ball(Block):
 		pygame.draw.rect(screen,bg_color,time_counter_rect)
 		screen.blit(time_counter,time_counter_rect)
 
-class Opponent(Block):
-	def __init__(self,path,x_pos,y_pos,speed):
-		super().__init__(path,x_pos,y_pos)
-		self.speed = speed
-		self
-
-	def update(self,ball_group):
-		if self.rect.top < ball_group.sprite.rect.y:
-			self.rect.y += self.speed
-		if self.rect.bottom > ball_group.sprite.rect.y:
-			self.rect.y -= self.speed
-		self.constrain()
-
-	def constrain(self):
-		if self.rect.top <= 0: self.rect.top = 0
-		if self.rect.bottom >= screen_height: self.rect.bottom = screen_height
-
 class GameManager:
 	def __init__(self,ball_group,paddle_group):
 		self.player_score = 0
@@ -143,10 +126,11 @@ pygame.init()
 clock = pygame.time.Clock()
 
 # Main Window
-screen_width = 1200
-screen_height = 650
+screen_width = 1360
+screen_height = 690
 screen = pygame.display.set_mode((screen_width,screen_height))
-pygame.display.set_caption('Pong')
+pygame.display.set_caption('Pong Ball Game')
+pygame.display.set_icon(pygame.image.load("Icon.jpeg"))
 
 # Global Variables
 bg_color = pygame.Color('#2F373F')
