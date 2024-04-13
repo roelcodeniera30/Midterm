@@ -60,8 +60,8 @@ class Ball(Block):
 
 	def reset_ball(self):
 		self.active = False
-		self.speed_x *= random.choice((-1,1))
-		self.speed_y *= random.choice((-1,1))
+		self.speed_x *= random.choice((-1.1,1.1))
+		self.speed_y *= random.choice((-1.1,1.1))
 		self.score_time = pygame.time.get_ticks()
 		self.rect.center = (screen_width/2,screen_height/2)
 		pygame.mixer.Sound.play(score_sound)
