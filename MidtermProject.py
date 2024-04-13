@@ -90,7 +90,7 @@ class GameManager:
 		self.opponent_score = 0
 		self.ball_group = ball_group
 		self.paddle_group = paddle_group
-		self.SCORE_TO_WIN = 3
+		self.SCORE_TO_WIN = 5
   
 	def run_game(self):
 		# Drawing the game objects
@@ -145,7 +145,7 @@ screen_width = 1360
 screen_height = 690
 screen = pygame.display.set_mode((screen_width,screen_height))
 pygame.display.set_caption('Pong Ball Game')
-pygame.display.set_icon(pygame.image.load("Icon.jpeg"))
+pygame.display.set_icon(pygame.image.load("Icon.png"))
 
 # Global Variables
 bg_color = pygame.Color('#2F373F')
