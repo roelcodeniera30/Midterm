@@ -115,7 +115,7 @@ class GameManager:
 			winner_score = basic_font.render("Red Player Wins!", True, accent_color)
 			screen.blit(winner_score, (screen_width // 2 - winner_score.get_width() // 2, screen_height // 2))
 			pygame.display.update()
-			pygame.time.delay(2000)
+			pygame.time.delay(5000)
 			running = False
    
 		elif self.player_score >= self.SCORE_TO_WIN:
