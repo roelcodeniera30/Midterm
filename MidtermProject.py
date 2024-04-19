@@ -148,7 +148,7 @@ pygame.display.set_caption('Pong Ball Game')
 pygame.display.set_icon(pygame.image.load("Icon.png"))
 
 # Global Variables
-bg_color = pygame.Color('#2F373F')
+bg_color = pygame.Color('#ffffff')
 accent_color = (27,35,43)
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
 plob_sound = pygame.mixer.Sound("pong.ogg")
@@ -162,7 +162,7 @@ paddle_group = pygame.sprite.Group()
 paddle_group.add(player)
 paddle_group.add(opponent)
 
-ball = Ball('Ball.png',screen_width/2,screen_height/2,4,4,paddle_group)
+ball = Ball('Ball2.png',screen_width/2,screen_height/2,4,4,paddle_group)
 ball_sprite = pygame.sprite.GroupSingle()
 ball_sprite.add(ball)
 
